@@ -1,0 +1,5 @@
+.card-line {
+  display: flex;
+  margin: 1vmin;
+  gap: 2vmin;
+}
