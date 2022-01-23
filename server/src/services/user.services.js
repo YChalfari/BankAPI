@@ -24,14 +24,10 @@ const addUser = async function (body) {
 
 const updateUser = async function (body) {
   try {
-    // const user = new User(body);
-    // console.log(user, body);
-    // const addedUser = await user.save();
-    console.log(body);
     const updatedUser = await User.findOneAndUpdate(
       { passportID: body.passportID },
       body,
-      { new: true }
+      { new: true, runValidators: true }
     );
     return updatedUser;
   } catch (e) {
