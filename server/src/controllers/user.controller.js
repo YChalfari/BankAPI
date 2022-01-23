@@ -7,6 +7,7 @@ const {
   setCredit,
   depositToUser,
   deleteUser,
+  updateUser,
 } = require("../services/user.services");
 
 exports.getUsers = async (req, res) => {
@@ -39,9 +40,18 @@ exports.getUser = async (req, res) => {
   }
 };
 
+exports.updateUser = async (req, res) => {
+  try {
+    const user = await updateUser(req.body);
+    return res.status(200).send({ results: user });
+  } catch (e) {
+    return res.status(400).send({ message: e.message });
+  }
+};
 exports.delete = async (req, res) => {
   try {
-    deleteUser(req.params.id);
+    const deleted = await deleteUser(req.params.id);
+    return res.status(200).send({ results: deleted });
   } catch (e) {
     res.status(404).send({ message: e.message });
   }

@@ -22,9 +22,26 @@ const addUser = async function (body) {
   }
 };
 
+const updateUser = async function (body) {
+  try {
+    // const user = new User(body);
+    // console.log(user, body);
+    // const addedUser = await user.save();
+    console.log(body);
+    const updatedUser = await User.findOneAndUpdate(
+      { passportID: body.passportID },
+      body,
+      { new: true }
+    );
+    return updatedUser;
+  } catch (e) {
+    throw Error(e.message);
+  }
+};
 const deleteUser = async function (id) {
   try {
     const res = await User.remove({ passportID: id });
+    return res;
   } catch (e) {
     throw Error(e.message);
   }
@@ -106,4 +123,5 @@ module.exports = {
   setCredit,
   depositToUser,
   deleteUser,
+  updateUser,
 };

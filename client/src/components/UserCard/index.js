@@ -22,7 +22,7 @@ const UserCard = ({ user, handleToggle, handleDelete }) => {
       {renderUser()}
       <button
         onClick={() => {
-          handleToggle("update");
+          handleToggle("update", user);
         }}
       >
         Update

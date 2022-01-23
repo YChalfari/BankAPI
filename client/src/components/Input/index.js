@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./input.css";
-const Input = ({ type, name, onChange }) => {
-  const [value, setValue] = useState("");
+const Input = ({ type, name, onChange, defaultValue }) => {
+  console.log(defaultValue);
+  const [value, setValue] = useState(defaultValue);
   useEffect(() => {
-    (() => {
-      onChange(name, value);
-    })();
+    onChange(name, value);
   }, [value]);
   const handleChange = (e) => {
     setValue(e.target.value);

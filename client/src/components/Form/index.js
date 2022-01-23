@@ -22,6 +22,7 @@ const Form = ({ inputs, type, text, handleSubmit, link, error }) => {
         key={input.name}
         type={input.type}
         name={input.name}
+        defaultValue={input.defaultValue}
         onChange={onChange}
       />
     ));
